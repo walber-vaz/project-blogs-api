@@ -1,6 +1,6 @@
 const { User } = require('../models');
 
-class UserService {
+class LoginService {
   static async getByUserEmail(email) {
     const user = await User.findOne({
       where: { email },
@@ -10,4 +10,4 @@ class UserService {
   }
 }
 
-module.exports = UserService;
+module.exports = LoginService;
