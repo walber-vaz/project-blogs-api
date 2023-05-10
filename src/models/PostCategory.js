@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       field: 'post_id',
       references: {
-        model: 'BlogPosts',
+        model: 'BlogPost',
         key: 'id',
       },
     },
@@ -27,16 +27,19 @@ module.exports = (sequelize, DataTypes) => {
   {
     timestamps: false,
     underscored: true,
+    tableName: 'posts_categories',
   });
 
   PostCategory.associate = (models) => {
-    models.Category.hasMany(models.BlogPosts, {
+    models.Category.belongsToMany(models.BlogPost, {
       as: 'categoryId',
       foreignKey: 'categoryId',
+      through: PostCategory,
     });
-    models.BlogPosts.hasMany(models.Category, {
+    models.BlogPost.belongsToMany(models.Category, {
       as: 'postId',
       foreignKey: 'postId',
+      through: PostCategory,
     });
   };
     

@@ -24,16 +24,6 @@ module.exports = {
       },
       image: {
         type: Sequelize.STRING,
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-        allowNull: false,
       }
     });
   },

@@ -17,22 +17,12 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'users',
+          model: 'categories',
           key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-        allowNull: false,
-      }
     });
   },
 
