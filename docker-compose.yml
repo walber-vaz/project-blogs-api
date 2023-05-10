@@ -19,6 +19,8 @@ services:
     # Diretório padrão de execução
     working_dir: /app
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
+    # setar usuario e grupo para o mesmo do host
+    user: node:node
     volumes:
       # Monta o diretório atual, com todos os dados do projeto, 
       # dentro do diretório /app
