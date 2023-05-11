@@ -10,6 +10,12 @@ class UserController {
 
     return res.status(type).json(message);
   }
+
+  static async getAll(req, res) {
+    const { message, type } = await userService.findAllUsers();
+
+    return res.status(type).json(message);
+  }
 }
 
 module.exports = UserController;
