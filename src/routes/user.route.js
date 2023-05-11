@@ -7,6 +7,7 @@ class UserRoute {
     this.router = Router();
 
     this.router.get('/', validateToken, userController.getAll);
+    this.router.get('/:id', validateToken, userController.getById);
     this.router.post('/', userController.create);
   }
 }

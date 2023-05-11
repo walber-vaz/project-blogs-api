@@ -22,6 +22,17 @@ class UserService {
 
     return { type: 200, message: users };
   }
+
+  static async findUserById(id) {
+    const [user] = await User.findAll({
+      where: { id },
+      attributes: { exclude: ['password'] },
+    });
+
+    if (!user) return { type: 404, message: { message: 'User does not exist' } };
+
+    return { type: 200, message: user };
+  }
 }
 
 module.exports = UserService;

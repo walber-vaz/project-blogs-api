@@ -16,6 +16,14 @@ class UserController {
 
     return res.status(type).json(message);
   }
+
+  static async getById(req, res) {
+    const { id } = req.params;
+    const { message, type } = await userService.findUserById(id);
+
+    console.log(message);
+    return res.status(type).json(message);
+  }
 }
 
 module.exports = UserController;
