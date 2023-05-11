@@ -4,6 +4,7 @@ const { createPostCategory } = require('./postCategory.service');
 const postCategoryValidate = require('./validations/postCategoryValidate');
 const postNewValidate = require('./validations/postNewValidate');
 const postIdValidate = require('./validations/postIdValidate');
+const postEditValidate = require('./validations/postEditValidate');
 
 class BlogPostService {
   static async createPost(post, userId) {
@@ -67,6 +68,17 @@ class BlogPostService {
     });
 
     return { type: 200, message: post };
+  }
+
+  static async updatePost(post, id) {
+    const error = postEditValidate(post);
+    if (error) return { type: error.type, message: error.message };
+
+    await BlogPost.update(post, { where: { id } });
+
+    const postUpdated = await this.getPostById(id);
+
+    return { type: 200, message: postUpdated.message };
   }
 }
 
