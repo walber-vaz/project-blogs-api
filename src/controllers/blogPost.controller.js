@@ -14,6 +14,13 @@ class BlogPostController {
 
     return res.status(type).json(message);
   }
+
+  static async getPostById(req, res) {
+    const { id } = req.params;
+    const { type, message } = await blogPostService.getPostById(Number(id));
+
+    return res.status(type).json(message);
+  }
 }
 
 module.exports = BlogPostController;
