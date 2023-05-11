@@ -8,6 +8,7 @@ class BlogPostRoute {
   constructor() {
     this.router = Router();
 
+    this.router.get('/search', validateToken, blogPostController.searchPost);
     this.router.get('/', validateToken, blogPostController.getAllPosts);
     this.router.get('/:id', validateToken, blogPostController.getPostById);
     this.router.post('/', validateToken, blogPostController.createPost);

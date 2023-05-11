@@ -35,6 +35,13 @@ class BlogPostController {
 
     return res.status(type).json(message);
   }
+
+  static async searchPost(req, res) {
+    const { q } = req.query;
+    const { type, message } = await blogPostService.searchPost(q);
+    
+    return res.status(type).json(message);
+  }
 }
 
 module.exports = BlogPostController;

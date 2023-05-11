@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { BlogPost, User, Category } = require('../models');
 const { getAllCategory } = require('./categories.service');
 const { createPostCategory } = require('./postCategory.service');
@@ -85,6 +86,28 @@ class BlogPostService {
     await BlogPost.destroy({ where: { id } });
 
     return { type: 204, message: '' };
+  }
+
+  static async searchPost(query) {
+    const post = await BlogPost.findAll({
+      where: { [Op.or]: [
+          { title: { [Op.like]: `%${query}%` } },
+          { content: { [Op.like]: `%${query}%` } },
+        ],
+      },
+      include: [
+        { model: User, 
+          as: 'user',
+          attributes: { exclude: ['password'] },
+        },
+        { model: Category,
+          as: 'categories',
+          attributes: { exclude: ['PostCategory'] },
+        },
+      ],
+    });
+
+    return { type: 200, message: post };
   }
 }
 
