@@ -80,6 +80,12 @@ class BlogPostService {
 
     return { type: 200, message: postUpdated.message };
   }
+
+  static async deletePost(id) {
+    await BlogPost.destroy({ where: { id } });
+
+    return { type: 204, message: '' };
+  }
 }
 
 module.exports = BlogPostService;

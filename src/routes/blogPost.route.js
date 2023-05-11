@@ -2,6 +2,7 @@ const { Router } = require('express');
 const validateToken = require('../middlewares/validateToken');
 const { blogPostController } = require('../controllers');
 const validateAuthorizationUpdatePost = require('../middlewares/validateAuthorizationUpdatePost');
+const validateIdPost = require('../middlewares/validateIdPost');
 
 class BlogPostRoute {
   constructor() {
@@ -15,6 +16,13 @@ class BlogPostRoute {
       validateToken,
       validateAuthorizationUpdatePost,
       blogPostController.updatePost,
+    );
+    this.router.delete(
+      '/:id',
+      validateToken,
+      validateIdPost,
+      validateAuthorizationUpdatePost,
+      blogPostController.deletePost,
     );
   }
 }

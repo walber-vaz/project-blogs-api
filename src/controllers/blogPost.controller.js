@@ -28,6 +28,13 @@ class BlogPostController {
 
     return res.status(type).json(message);
   }
+
+  static async deletePost(req, res) {
+    const { id } = req.params;
+    const { type, message } = await blogPostService.deletePost(id);
+
+    return res.status(type).json(message);
+  }
 }
 
 module.exports = BlogPostController;
