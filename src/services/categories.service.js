@@ -10,6 +10,12 @@ class CategoriesService {
 
     return { type: 201, message: newCategory.dataValues };
   }
+
+  static async getAllCategory() {
+    const allCategories = await Category.findAll();
+
+    return { type: 200, message: allCategories };
+  }
 }
 
 module.exports = CategoriesService;

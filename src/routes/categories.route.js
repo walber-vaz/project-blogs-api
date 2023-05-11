@@ -6,6 +6,7 @@ class CategoriesRoute {
   constructor() {
     this.router = Router();
 
+    this.router.get('/', validateToken, categoriesController.getAllCategory);
     this.router.post('/', validateToken, categoriesController.createCategory);
   }
 }

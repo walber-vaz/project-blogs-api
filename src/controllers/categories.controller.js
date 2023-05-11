@@ -6,6 +6,12 @@ class CategoriesController {
 
     return res.status(type).json(message);
   }
+
+  static async getAllCategory(req, res) {
+    const { type, message } = await categoriesService.getAllCategory();
+
+    return res.status(type).json(message);
+  }
 }
 
 module.exports = CategoriesController;
