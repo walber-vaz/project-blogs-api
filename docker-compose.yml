@@ -5,7 +5,8 @@ services:
   node:
     # Faz o build do Dockerfile da pasta atual e utiliza o resultado desse build
     # como a imagem do container
-    image: node:16
+    image: blogs_api
+    build: .
     # Nome do container para facilitar execução
     container_name: blogs_api
     # Mesmo que `docker run -t`
@@ -19,8 +20,6 @@ services:
     # Diretório padrão de execução
     working_dir: /app
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
-    # setar usuario e grupo para o mesmo do host
-    user: node:node
     volumes:
       # Monta o diretório atual, com todos os dados do projeto, 
       # dentro do diretório /app
