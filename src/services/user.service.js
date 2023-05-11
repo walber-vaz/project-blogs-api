@@ -33,6 +33,12 @@ class UserService {
 
     return { type: 200, message: user };
   }
+
+  static async deleteUser(id) {
+    await User.destroy({ where: { id } });
+
+    return { type: 204, message: '' };
+  }
 }
 
 module.exports = UserService;

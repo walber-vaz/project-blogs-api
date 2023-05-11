@@ -24,6 +24,13 @@ class UserController {
     console.log(message);
     return res.status(type).json(message);
   }
+
+  static async delete(req, res) {
+    const idUserDelete = req.user.payload.id;
+    const { message, type } = await userService.deleteUser(idUserDelete);
+
+    return res.status(type).json(message);
+  }
 }
 
 module.exports = UserController;
