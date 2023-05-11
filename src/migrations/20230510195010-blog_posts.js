@@ -31,11 +31,11 @@ module.exports = {
       published: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
+        defaultValues: Sequelize.fn('now'),
       },
       updated: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
+        defaultValues: Sequelize.fn('now'),
         allowNull: false,
       }
     });

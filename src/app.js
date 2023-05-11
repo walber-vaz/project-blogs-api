@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginRoute, userRoute, categoriesRoute } = require('./routes');
+const { loginRoute, userRoute, categoriesRoute, blogPostRoute } = require('./routes');
 
 class App {
   constructor() {
@@ -19,6 +19,7 @@ class App {
     this.app.use('/login', loginRoute);
     this.app.use('/user', userRoute);
     this.app.use('/categories', categoriesRoute);
+    this.app.use('/post', blogPostRoute);
   }
 }
 
