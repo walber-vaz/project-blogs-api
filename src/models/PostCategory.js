@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
     postId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: 'post_id',
       references: {
         model: 'BlogPost',
         key: 'id',
@@ -17,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     categoryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: 'category_id',
       references: {
         model: 'Category',
         key: 'id',
@@ -38,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'postId',
     });
     models.BlogPost.belongsToMany(models.Category, {
-      as: 'postId',
-      foreignKey: 'postId',
+      as: 'categories',
+      foreignKey: 'categoryId',
       through: PostCategory,
       otherKey: 'categoryId',
     });

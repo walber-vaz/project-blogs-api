@@ -6,7 +6,13 @@ class BlogPostController {
     const userId = req.user.payload.id;
     const { type, message } = await blogPostService.createPost(req.body, userId);
 
-    res.status(type).json(message);
+    return res.status(type).json(message);
+  }
+
+  static async getAllPosts(req, res) {
+    const { type, message } = await blogPostService.getAllPosts();
+
+    return res.status(type).json(message);
   }
 }
 
